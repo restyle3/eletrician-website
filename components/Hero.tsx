@@ -19,7 +19,7 @@ export default function Hero() {
       ref={ref}
       id="hero"
       className="relative min-h-screen flex items-end overflow-hidden"
-      aria-label="EP Elektro – Elektroinstallationen Schweiz"
+      aria-label="EP Elektro – Instalações eléctricas em Portugal"
     >
       {/* Background image with parallax */}
       <motion.div className="absolute inset-0 z-0" style={{ y: yBg }}>
@@ -32,12 +32,11 @@ export default function Hero() {
           loading="eager"
           fetchPriority="high"
         />
-        {/* Strong dark overlay for readability */}
         <div className="absolute inset-0 bg-[#0c1c35]/75" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c1c35] via-[#0c1c35]/40 to-transparent" />
       </motion.div>
 
-      {/* Content aligned to bottom-left like many industrial sites */}
+      {/* Content */}
       <motion.div
         style={{ opacity }}
         className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8 pb-20 lg:pb-28 pt-32 w-full"
@@ -48,55 +47,52 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="max-w-2xl"
         >
-          {/* Simple label */}
           <p className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-6">
-            Elektroinstallationen · Schweiz
+            Instalações Eléctricas · Portugal
           </p>
 
-          {/* Headline — clean, not over-designed */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-            Zuverlässige Elektro&shy;installationen
+            Instalações eléctricas
             <br />
-            <span className="font-light text-white/70">für die ganze Schweiz.</span>
+            <span className="font-light text-white/70">de confiança, em todo o país.</span>
           </h1>
 
           <p className="text-white/55 text-base lg:text-lg leading-relaxed mb-10 max-w-lg">
-            EP Elektro realisiert Elektroprojekte für Privat- und Geschäftskunden —
-            termingerecht, sicher und auf höchstem Qualitätsniveau.
+            A EP Elektro realiza projectos eléctricos para particulares e empresas
+            — dentro do prazo, com segurança e ao mais alto nível de qualidade.
           </p>
 
-          {/* Two simple CTAs */}
           <div className="flex flex-wrap items-center gap-4">
             <a
-              href="#kontakt"
+              href="#contacto"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#0c1c35] text-sm font-semibold hover:bg-white/90 transition-colors duration-200"
             >
-              Offerte anfragen
+              Pedir orçamento
               <ArrowRight size={15} />
             </a>
             <a
-              href="tel:+41441234567"
+              href="tel:+351210000000"
               className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white text-sm hover:border-white/60 transition-colors duration-200"
             >
               <Phone size={15} />
-              +41 44 123 45 67
+              +351 21 000 00 00
             </a>
           </div>
         </motion.div>
 
-        {/* Simple stats row at bottom — no cards, just numbers */}
+        {/* Stats row */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
           className="mt-16 pt-8 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-8"
-          aria-label="Kennzahlen"
+          aria-label="Indicadores"
         >
           {[
-            { value: "18+", label: "Jahre Erfahrung" },
-            { value: "850+", label: "Projekte" },
-            { value: "4.9★", label: "Kundenbewertung" },
-            { value: "24/7", label: "Notfalldienst" },
+            { value: "18+", label: "Anos de experiência" },
+            { value: "850+", label: "Projetos concluídos" },
+            { value: "4.9★", label: "Avaliação dos clientes" },
+            { value: "24/7", label: "Serviço de emergência" },
           ].map(({ value, label }) => (
             <div key={label}>
               <div className="text-white text-2xl font-bold leading-none mb-1">{value}</div>

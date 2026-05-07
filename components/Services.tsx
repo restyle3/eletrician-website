@@ -1,149 +1,101 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import {
-  Home,
+  Zap,
   Wrench,
-  AlertTriangle,
+  AlertCircle,
   Lightbulb,
-  Cpu,
-  Wifi,
+  Settings,
+  Home,
 } from "lucide-react";
 
 const services = [
   {
-    icon: Home,
-    title: "Elektroinstallationen",
-    description:
-      "Neuinstallationen und Renovierungen in Wohn- und Gewerbebauten. Normgerecht, sorgfältig geplant und ausgeführt.",
-    emergency: false,
+    icon: Zap,
+    title: "Instalações Eléctricas",
+    text: "Instalação elétrica completa para habitações novas e remodelações — desde o quadro até à tomada final, com toda a certificação exigida.",
   },
   {
     icon: Wrench,
-    title: "Wartung & Service",
-    description:
-      "Regelmässige Wartungsverträge für Privat- und Geschäftskunden. Präventive Instandhaltung Ihrer Elektroanlagen.",
-    emergency: false,
+    title: "Manutenção e Assistência",
+    text: "Contratos de manutenção preventiva e assistência técnica para instalações domésticas e industriais. Rápido, fiável e documentado.",
   },
   {
-    icon: AlertTriangle,
-    title: "Notfallreparaturen",
-    description:
-      "Rund um die Uhr erreichbar. Unser Notfalldienst ist innerhalb kürzester Zeit bei Ihnen — 365 Tage im Jahr.",
-    emergency: true,
+    icon: AlertCircle,
+    title: "Reparações de Emergência",
+    text: "Avaria eléctrica? A nossa equipa de urgências está disponível 24 horas por dia, 7 dias por semana — intervenção em poucas horas.",
   },
   {
     icon: Lightbulb,
-    title: "Beleuchtungssysteme",
-    description:
-      "LED-Planung, Aussenbeleuchtung, Industriebeleuchtung. Energieeffiziente Lichtlösungen für jeden Bereich.",
-    emergency: false,
+    title: "Sistemas de Iluminação",
+    text: "Projecto e instalação de sistemas de iluminação interior e exterior, incluindo soluções LED de baixo consumo e controlo inteligente.",
   },
   {
-    icon: Cpu,
-    title: "Elektroverteiler",
-    description:
-      "Planung und Montage von Haupt- und Unterverteilungen. Normenkonform für Neubauten und Sanierungen.",
-    emergency: false,
+    icon: Settings,
+    title: "Quadros Eléctricos",
+    text: "Instalação, substituição e certificação de quadros eléctricos residenciais e industriais, em conformidade com as normas em vigor.",
   },
   {
-    icon: Wifi,
-    title: "Smart Home",
-    description:
-      "KNX- und Loxone-Systeme: Lichtsteuerung, Beschattung, Sicherheit und Multimedia intelligent vernetzt.",
-    emergency: false,
+    icon: Home,
+    title: "Casa Inteligente",
+    text: "Automação residencial: iluminação, estores, climatização e segurança integrados num único sistema de controlo intuitivo.",
   },
 ];
 
 export default function Services() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section
-      id="leistungen"
-      className="py-24 lg:py-32 bg-white"
-      aria-labelledby="leistungen-titel"
-    >
+    <section id="servicos" className="bg-[#f8f9fb] py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-16" ref={ref}>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-          >
-            Leistungen
-          </motion.p>
-          <motion.h2
-            id="leistungen-titel"
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-[#0c1c35] leading-tight max-w-xl"
-          >
-            Das komplette Spektrum elektrotechnischer Dienstleistungen.
-          </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-16"
+        >
+          <p className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+            Serviços
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#0c1c35]">
+            O que fazemos
+          </h2>
+        </motion.div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#e0e4ea]">
+          {services.map(({ icon: Icon, title, text }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.07, ease: "easeOut" }}
+              className="bg-[#f8f9fb] p-8 group"
+            >
+              <Icon
+                size={24}
+                strokeWidth={1.5}
+                className="text-[#0c1c35] mb-5 group-hover:text-[#f5c518] transition-colors duration-200"
+              />
+              <h3 className="text-base font-semibold text-[#0c1c35] mb-3">{title}</h3>
+              <p className="text-sm text-[#0c1c35]/55 leading-relaxed">{text}</p>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Services grid — flat, no card boxes */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-gray-100">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: index * 0.07, ease: "easeOut" }}
-                className="border-b border-r border-gray-100 p-8 lg:p-10 group hover:bg-[#f8f9fb] transition-colors duration-200"
-              >
-                <div className="flex items-start gap-4">
-                  <Icon
-                    size={20}
-                    className={
-                      service.emergency
-                        ? "text-red-500 shrink-0 mt-0.5"
-                        : "text-[#0c1c35] shrink-0 mt-0.5"
-                    }
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <h3 className="text-[#0c1c35] font-semibold text-base mb-2 flex items-center gap-2">
-                      {service.title}
-                      {service.emergency && (
-                        <span className="text-[9px] font-bold tracking-widest uppercase text-red-500 border border-red-200 px-1.5 py-0.5">
-                          24/7
-                        </span>
-                      )}
-                    </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Simple bottom CTA */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-14"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12 text-sm text-[#0c1c35]/55"
         >
-          <a
-            href="#kontakt"
-            className="text-[#0c1c35] text-sm font-semibold border-b border-[#0c1c35] pb-px hover:border-[#f5c518] hover:text-[#0c1c35] transition-colors duration-200"
-          >
-            Beratungsgespräch vereinbaren →
+          Não encontrou o que procura?{" "}
+          <a href="#contacto" className="text-[#0c1c35] font-medium hover:underline">
+            Fale connosco →
           </a>
         </motion.div>
       </div>

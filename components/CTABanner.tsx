@@ -1,84 +1,78 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone } from "lucide-react";
+
+const badges = [
+  "Orçamento gratuito",
+  "Primeira consulta sem compromisso",
+  "Preços transparentes",
+  "Resposta em menos de 24 horas",
+];
 
 export default function CTABanner() {
   return (
-    <section
-      className="bg-[#0c1c35] py-20 lg:py-24"
-      aria-label="Notfallkontakt und Offerte"
-    >
+    <section className="bg-[#0c1c35] py-20 lg:py-24" aria-label="Serviço de emergência 24/7">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Emergency */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
+          {/* Left text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <p className="text-red-400 text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-              Notfalldienst · 24/7
+            <p className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+              Serviço de emergência · 24/7
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
-              Elektrischer Notfall?
-              <br />
-              <span className="text-[#f5c518]">Wir sind sofort für Sie da.</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">
+              Emergência eléctrica?
             </h2>
-            <p className="text-white/50 text-base leading-relaxed mb-7">
-              Stromausfall, Kurzschluss, Sicherungsausfall — unser Notfallteam
-              ist 365 Tage im Jahr rund um die Uhr erreichbar und in der Regel
-              innerhalb von 60 Minuten vor Ort.
+            <p className="text-white/40 text-base">
+              Estamos disponíveis de imediato, todos os dias, a qualquer hora.
             </p>
-            <a
-              href="tel:+41441234567"
-              className="inline-flex items-center gap-3 bg-white text-[#0c1c35] px-7 py-4 font-semibold text-base hover:bg-[#f5c518] transition-colors duration-200"
-              aria-label="Notfallnummer anrufen: +41 44 123 45 67"
-            >
-              <Phone size={18} />
-              +41 44 123 45 67
-            </a>
           </motion.div>
 
-          {/* Quote CTA — no card box, just clean text */}
+          {/* Right CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            className="border-t lg:border-t-0 lg:border-l border-white/15 pt-10 lg:pt-0 lg:pl-16"
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
           >
-            <h3 className="text-white font-bold text-xl mb-3">
-              Kostenlose Offerte anfragen
-            </h3>
-            <p className="text-white/45 text-sm leading-relaxed mb-7">
-              Für nicht-dringende Anfragen erstellen wir Ihnen innert 24 Stunden
-              eine transparente, unverbindliche Offerte.
-            </p>
-
-            <ul className="space-y-2.5 mb-8">
-              {[
-                "Unverbindliche Erstberatung",
-                "Transparente Preise",
-                "Antwort innert 24 Stunden",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-white/55 text-sm">
-                  <span className="w-1 h-1 rounded-full bg-[#f5c518] shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
             <a
-              href="#kontakt"
-              className="inline-flex items-center gap-2 text-white text-sm font-semibold border-b border-white/30 pb-px hover:border-[#f5c518] hover:text-[#f5c518] transition-colors duration-200"
+              href="tel:+351210000000"
+              className="inline-flex items-center gap-3 px-7 py-4 bg-[#f5c518] text-[#0c1c35] font-bold text-sm hover:bg-[#f5c518]/90 transition-colors duration-200"
+              aria-label="Ligar agora para EP Elektro"
             >
-              Offerte anfordern
-              <ArrowRight size={14} />
+              <Phone size={16} />
+              +351 21 000 00 00
+            </a>
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-2 px-7 py-4 border border-white/20 text-white text-sm hover:border-white/50 transition-colors duration-200"
+            >
+              Pedir orçamento
             </a>
           </motion.div>
         </div>
+
+        {/* Badges */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="mt-10 pt-8 border-t border-white/10 flex flex-wrap gap-6"
+          aria-label="Vantagens"
+        >
+          {badges.map((b) => (
+            <span key={b} className="text-white/35 text-xs">
+              ✓ {b}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

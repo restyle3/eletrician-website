@@ -1,300 +1,212 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Send,
-  CheckCircle2,
-  Loader2,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
 
 const contactInfo = [
   {
     icon: Phone,
-    label: "Telefon",
-    value: "+41 44 123 45 67",
-    href: "tel:+41441234567",
-    sub: "Mo–Fr 07:00–18:00 · Sa 08:00–13:00",
+    label: "Telefone",
+    value: "+351 21 000 00 00",
+    href: "tel:+351210000000",
   },
   {
     icon: Mail,
-    label: "E-Mail",
-    value: "info@ep-elektro.ch",
-    href: "mailto:info@ep-elektro.ch",
-    sub: "Antwort innert 24 Stunden",
+    label: "E-mail",
+    value: "info@ep-elektro.pt",
+    href: "mailto:info@ep-elektro.pt",
   },
   {
     icon: MapPin,
-    label: "Adresse",
-    value: "Industriestrasse 42, 8005 Zürich",
-    href: "https://maps.google.com/?q=Industriestrasse+42+8005+Zürich",
-    sub: "Parkplätze vorhanden",
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: "+41 79 987 65 43",
-    href: "https://wa.me/41799876543?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20Offerte%20anfragen.",
-    sub: "Nachrichten jederzeit",
+    label: "Morada",
+    value: "Rua da Electricidade 12, 1000-001 Lisboa",
+    href: "https://maps.google.com",
   },
 ];
 
 const services = [
-  "Elektroinstallationen",
-  "Smart Home / KNX",
-  "Notfallreparatur",
-  "Beleuchtungsplanung",
-  "Wartungsvertrag",
-  "Elektroverteiler",
-  "Sonstiges",
+  "Instalação eléctrica",
+  "Manutenção / Assistência",
+  "Emergência",
+  "Iluminação",
+  "Quadros eléctricos",
+  "Casa inteligente",
+  "Outro",
 ];
 
-type FormState = "idle" | "loading" | "success";
-
 export default function Contact() {
-  const [formState, setFormState] = useState<FormState>("idle");
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormState("loading");
-    await new Promise((r) => setTimeout(r, 1500));
-    setFormState("success");
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSent(true);
+    }, 1200);
   };
 
   return (
-    <section
-      id="kontakt"
-      className="py-24 lg:py-32 bg-white"
-      aria-labelledby="kontakt-titel"
-    >
+    <section id="contacto" className="bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-14">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-          >
-            Kontakt
-          </motion.p>
-          <motion.h2
-            id="kontakt-titel"
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-[#0c1c35] leading-tight"
-          >
-            Lassen Sie uns sprechen.
-          </motion.h2>
-        </div>
-
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-          {/* Contact info — simple list, no dark card box */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left – info */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-2"
           >
-            <p className="text-gray-500 text-sm leading-relaxed mb-8">
-              Beschreiben Sie Ihr Projekt — wir melden uns innert 24 Stunden
-              mit einem konkreten Vorschlag.
+            <p className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+              Contacto
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#0c1c35] mb-4">
+              Fale connosco
+            </h2>
+            <p className="text-[#0c1c35]/50 text-sm leading-relaxed mb-10">
+              Solicite um orçamento gratuito ou esclareça as suas dúvidas. Respondemos
+              em menos de 24 horas nos dias úteis.
             </p>
 
-            <div className="space-y-6 mb-8">
-              {contactInfo.map(({ icon: Icon, label, value, href, sub }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex items-start gap-4 group"
-                  aria-label={`${label}: ${value}`}
-                >
-                  <Icon
-                    size={16}
-                    className="text-[#f5c518] mt-0.5 shrink-0"
-                    aria-hidden="true"
-                  />
+            {/* Contact info list */}
+            <ul className="space-y-6 mb-10">
+              {contactInfo.map(({ icon: Icon, label, value, href }) => (
+                <li key={label} className="flex items-start gap-4">
+                  <Icon size={18} strokeWidth={1.5} className="text-[#0c1c35]/40 mt-0.5 shrink-0" />
                   <div>
-                    <div className="text-[#0c1c35] text-sm font-medium group-hover:text-[#163260] transition-colors">
+                    <div className="text-xs text-[#0c1c35]/35 mb-0.5">{label}</div>
+                    <a
+                      href={href}
+                      className="text-sm text-[#0c1c35] hover:underline"
+                      target={label === "Morada" ? "_blank" : undefined}
+                      rel={label === "Morada" ? "noopener noreferrer" : undefined}
+                    >
                       {value}
-                    </div>
-                    <div className="text-gray-400 text-xs mt-0.5">{sub}</div>
+                    </a>
                   </div>
-                </a>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            {/* WhatsApp CTA */}
+            {/* WhatsApp */}
             <a
-              href="https://wa.me/41799876543?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20Offerte%20anfragen."
+              href="https://wa.me/351210000000?text=Olá%2C%20gostaria%20de%20pedir%20um%20orçamento."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 text-sm text-[#0c1c35] font-semibold border-b border-[#0c1c35] pb-px hover:text-[#25D366] hover:border-[#25D366] transition-colors duration-200"
-              aria-label="Auf WhatsApp schreiben"
+              className="inline-flex items-center gap-2 text-sm text-[#0c1c35]/50 hover:text-[#0c1c35] transition-colors duration-150"
+              aria-label="Contactar por WhatsApp"
             >
-              <MessageCircle size={15} />
-              Direkt auf WhatsApp schreiben
+              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              WhatsApp
             </a>
           </motion.div>
 
-          {/* Form — clean, no heavy card styling */}
+          {/* Right – form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="lg:col-span-3"
           >
-            {formState === "success" ? (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="flex flex-col items-start gap-4 py-8"
-              >
-                <CheckCircle2 size={36} className="text-[#f5c518]" />
-                <h3 className="text-[#0c1c35] font-bold text-2xl">
-                  Vielen Dank!
-                </h3>
-                <p className="text-gray-500 text-base leading-relaxed max-w-sm">
-                  Ihre Anfrage ist bei uns eingegangen. Wir melden uns innert
-                  24 Stunden.
+            {sent ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-16 gap-4">
+                <CheckCircle size={40} className="text-[#0c1c35]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#0c1c35]">Muito obrigado!</h3>
+                <p className="text-sm text-[#0c1c35]/50">
+                  Recebemos a sua mensagem e entraremos em contacto em breve.
                 </p>
-                <button
-                  onClick={() => {
-                    setFormState("idle");
-                    setForm({ name: "", email: "", phone: "", service: "", message: "" });
-                  }}
-                  className="text-sm text-[#0c1c35] font-semibold border-b border-[#0c1c35] pb-px hover:border-[#f5c518] transition-colors"
-                >
-                  Neue Anfrage senden
-                </button>
-              </motion.div>
+              </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate aria-label="Kontaktformular">
-                <div className="grid sm:grid-cols-2 gap-5 mb-5">
+              <form onSubmit={handleSubmit} noValidate className="space-y-5" aria-label="Formulário de contacto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-semibold text-[#0c1c35] uppercase tracking-wide mb-2">
-                      Name <span className="text-red-400">*</span>
+                    <label htmlFor="name" className="block text-xs text-[#0c1c35]/50 mb-1.5">
+                      Nome *
                     </label>
                     <input
                       id="name"
                       name="name"
                       type="text"
                       required
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Max Mustermann"
-                      className="w-full px-4 py-3 border border-gray-200 text-[#0c1c35] text-sm focus:outline-none focus:border-[#0c1c35] placeholder:text-gray-300 transition-colors"
                       autoComplete="name"
+                      className="w-full border border-[#0c1c35]/15 px-3 py-2.5 text-sm text-[#0c1c35] placeholder-[#0c1c35]/25 focus:outline-none focus:border-[#0c1c35]/40 transition-colors bg-transparent"
+                      placeholder="João Silva"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs font-semibold text-[#0c1c35] uppercase tracking-wide mb-2">
-                      E-Mail <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="max@beispiel.ch"
-                      className="w-full px-4 py-3 border border-gray-200 text-[#0c1c35] text-sm focus:outline-none focus:border-[#0c1c35] placeholder:text-gray-300 transition-colors"
-                      autoComplete="email"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-xs font-semibold text-[#0c1c35] uppercase tracking-wide mb-2">
-                      Telefon
+                    <label htmlFor="phone" className="block text-xs text-[#0c1c35]/50 mb-1.5">
+                      Telefone
                     </label>
                     <input
                       id="phone"
                       name="phone"
                       type="tel"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder="+41 79 000 00 00"
-                      className="w-full px-4 py-3 border border-gray-200 text-[#0c1c35] text-sm focus:outline-none focus:border-[#0c1c35] placeholder:text-gray-300 transition-colors"
                       autoComplete="tel"
+                      className="w-full border border-[#0c1c35]/15 px-3 py-2.5 text-sm text-[#0c1c35] placeholder-[#0c1c35]/25 focus:outline-none focus:border-[#0c1c35]/40 transition-colors bg-transparent"
+                      placeholder="+351 900 000 000"
                     />
-                  </div>
-                  <div>
-                    <label htmlFor="service" className="block text-xs font-semibold text-[#0c1c35] uppercase tracking-wide mb-2">
-                      Leistung
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={form.service}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-200 text-[#0c1c35] text-sm focus:outline-none focus:border-[#0c1c35] bg-white transition-colors"
-                    >
-                      <option value="">Bitte wählen…</option>
-                      {services.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
                   </div>
                 </div>
 
-                <div className="mb-7">
-                  <label htmlFor="message" className="block text-xs font-semibold text-[#0c1c35] uppercase tracking-wide mb-2">
-                    Nachricht <span className="text-red-400">*</span>
+                <div>
+                  <label htmlFor="email" className="block text-xs text-[#0c1c35]/50 mb-1.5">
+                    E-mail *
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    className="w-full border border-[#0c1c35]/15 px-3 py-2.5 text-sm text-[#0c1c35] placeholder-[#0c1c35]/25 focus:outline-none focus:border-[#0c1c35]/40 transition-colors bg-transparent"
+                    placeholder="joao@empresa.pt"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="service" className="block text-xs text-[#0c1c35]/50 mb-1.5">
+                    Serviço pretendido
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    className="w-full border border-[#0c1c35]/15 px-3 py-2.5 text-sm text-[#0c1c35] focus:outline-none focus:border-[#0c1c35]/40 transition-colors bg-transparent"
+                  >
+                    <option value="">Selecione um serviço</option>
+                    {services.map((s) => (
+                      <option key={s} value={s}>
+                        {s}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-xs text-[#0c1c35]/50 mb-1.5">
+                    Mensagem
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    required
-                    rows={5}
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Beschreiben Sie kurz Ihr Projekt…"
-                    className="w-full px-4 py-3 border border-gray-200 text-[#0c1c35] text-sm focus:outline-none focus:border-[#0c1c35] placeholder:text-gray-300 transition-colors resize-none"
+                    rows={4}
+                    className="w-full border border-[#0c1c35]/15 px-3 py-2.5 text-sm text-[#0c1c35] placeholder-[#0c1c35]/25 focus:outline-none focus:border-[#0c1c35]/40 transition-colors bg-transparent resize-none"
+                    placeholder="Descreva brevemente o seu projecto ou avaria..."
                   />
                 </div>
 
-                <p className="text-gray-300 text-xs mb-6">
-                  Ihre Daten werden vertraulich behandelt und nicht weitergegeben.
-                </p>
-
                 <button
                   type="submit"
-                  disabled={formState === "loading"}
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#0c1c35] text-white text-sm font-semibold hover:bg-[#163260] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                  disabled={loading}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0c1c35] text-white text-sm font-medium hover:bg-[#0c1c35]/85 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {formState === "loading" ? (
+                  {loading ? "A enviar..." : (
                     <>
-                      <Loader2 size={16} className="animate-spin" />
-                      Wird gesendet…
-                    </>
-                  ) : (
-                    <>
-                      <Send size={16} />
-                      Anfrage absenden
+                      Enviar mensagem
+                      <Send size={14} />
                     </>
                   )}
                 </button>

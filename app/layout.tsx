@@ -13,32 +13,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EP Elektro – Ihr Elektriker in Zürich & Deutschschweiz",
+  title: "EP Elektro – Electricista em Portugal",
   description:
-    "EP Elektro ist Ihr zuverlässiger Partner für Elektroinstallationen, Smart Home, Beleuchtungssysteme und Notfallreparaturen in der Deutschschweiz. NIV-zertifiziert, ISO 9001. Jetzt Offerte anfragen.",
+    "A EP Elektro é o seu parceiro de confiança para instalações eléctricas, casa inteligente, sistemas de iluminação e reparações de emergência em Portugal. Orçamento gratuito.",
   keywords: [
-    "Elektriker Zürich",
+    "electricista Lisboa",
     "EP Elektro",
-    "Elektroinstallation Schweiz",
-    "Smart Home Zürich",
-    "Elektriker Notfall",
-    "KNX Installation",
+    "instalações eléctricas Portugal",
+    "casa inteligente",
+    "electricista urgência",
+    "quadros eléctricos",
   ],
   authors: [{ name: "EP Elektro" }],
   openGraph: {
     type: "website",
-    locale: "de_CH",
-    url: "https://www.ep-elektro.ch",
+    locale: "pt_PT",
+    url: "https://www.ep-elektro.pt",
     siteName: "EP Elektro",
-    title: "EP Elektro – Ihr Elektriker in Zürich",
+    title: "EP Elektro – Electricista em Portugal",
     description:
-      "Professionelle Elektroinstallationen, Smart Home und 24/7 Notfallservice in der Deutschschweiz.",
+      "Instalações eléctricas profissionais, casa inteligente e serviço de emergência 24/7 em Portugal.",
     images: [
       {
         url: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80",
         width: 1200,
         height: 630,
-        alt: "EP Elektro – Elektriker in Zürich",
+        alt: "EP Elektro – Electricista em Portugal",
       },
     ],
   },
@@ -55,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="de-CH"
+      lang="pt-PT"
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

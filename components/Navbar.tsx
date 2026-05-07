@@ -6,11 +6,11 @@ import { Zap, Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#leistungen", label: "Leistungen" },
-  { href: "#uber-uns", label: "Über uns" },
-  { href: "#projekte", label: "Projekte" },
-  { href: "#referenzen", label: "Referenzen" },
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "#servicos", label: "Serviços" },
+  { href: "#sobre-nos", label: "Sobre nós" },
+  { href: "#projetos", label: "Projetos" },
+  { href: "#testemunhos", label: "Testemunhos" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 export default function Navbar() {
@@ -44,13 +44,13 @@ export default function Navbar() {
       >
         <nav
           className="mx-auto max-w-6xl px-6 lg:px-8 flex items-center justify-between py-5"
-          aria-label="Hauptnavigation"
+          aria-label="Navegação principal"
         >
           {/* Logo */}
           <a
             href="#"
             className="flex items-center gap-2 group"
-            aria-label="EP Elektro – Startseite"
+            aria-label="EP Elektro – Página inicial"
           >
             <Zap size={20} className="text-[#f5c518]" strokeWidth={2} />
             <span className="text-white font-semibold text-base tracking-wide">
@@ -75,17 +75,17 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-5">
             <a
-              href="tel:+41441234567"
+              href="tel:+351210000000"
               className="flex items-center gap-2 text-sm text-white/65 hover:text-white transition-colors duration-200"
             >
               <Phone size={14} />
-              +41 44 123 45 67
+              +351 21 000 00 00
             </a>
             <a
-              href="#kontakt"
+              href="#contacto"
               className="px-4 py-2 border border-white/30 text-white text-sm hover:bg-white hover:text-[#0c1c35] transition-all duration-200"
             >
-              Kontakt
+              Contacto
             </a>
           </div>
 
@@ -94,7 +94,7 @@ export default function Navbar() {
             className="md:hidden text-white p-1"
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
-            aria-label={mobileOpen ? "Menü schliessen" : "Menü öffnen"}
+            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -113,7 +113,7 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-[#0c1c35] flex flex-col pt-20 px-6 pb-10"
             role="dialog"
             aria-modal="true"
-            aria-label="Mobilnavigation"
+            aria-label="Navegação móvel"
           >
             <nav className="flex flex-col">
               {navLinks.map((link) => (
@@ -129,18 +129,18 @@ export default function Navbar() {
             </nav>
             <div className="mt-auto flex flex-col gap-4">
               <a
-                href="tel:+41441234567"
+                href="tel:+351210000000"
                 className="flex items-center gap-3 text-white/60 text-base"
               >
                 <Phone size={16} />
-                +41 44 123 45 67
+                +351 21 000 00 00
               </a>
               <a
-                href="#kontakt"
+                href="#contacto"
                 onClick={() => setMobileOpen(false)}
                 className="w-full py-4 border border-white/30 text-white text-center text-base hover:bg-white hover:text-[#0c1c35] transition-all duration-200"
               >
-                Kontakt aufnehmen
+                Pedir orçamento
               </a>
             </div>
           </motion.div>

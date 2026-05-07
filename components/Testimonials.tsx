@@ -5,128 +5,84 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Markus Huber",
-    role: "Bauherr, Küsnacht ZH",
-    avatar: "MH",
-    text: "EP Elektro hat unser Einfamilienhaus mit einem vollständigen KNX Smart Home ausgestattet. Die Arbeit war tadellos, der Abschluss sogar zwei Tage früher als geplant.",
+    name: "João Ferreira",
+    role: "Proprietário – Lisboa",
+    text: "Trabalho impecável na instalação eléctrica da nossa moradia. Cumpriram o prazo e deixaram tudo limpo. Muito profissionais.",
   },
   {
-    name: "Sandra Meier-Brünner",
-    role: "Immobilienverwalterin, Zürich",
-    avatar: "SM",
-    text: "Wir arbeiten seit vier Jahren mit EP Elektro zusammen. Professionell, pünktlich und kompetent — man merkt, dass das Team wirklich weiss, was es tut.",
+    name: "Ana Costa",
+    role: "Directora – Empresa em Porto",
+    text: "A EP Elektro modernizou toda a instalação dos nossos escritórios. O acompanhamento foi exemplar, do projecto à conclusão.",
   },
   {
-    name: "Thomas Bächler",
-    role: "Geschäftsführer tbk Architekten",
-    avatar: "TB",
-    text: "Für unser Bürogebäude hat EP Elektro eine massgeschneiderte Lösung geliefert. Die Zusammenarbeit war reibungslos und die Qualität überzeugt jeden Tag.",
+    name: "Miguel Santos",
+    role: "Gerente de restaurante – Cascais",
+    text: "Resolveram uma avaria de urgência num sábado à noite sem hesitar. Rápidos, competentes e com preço justo. Altamente recomendo.",
   },
   {
-    name: "Petra Zimmermann",
-    role: "Hotelbetreiberin, Winterthur",
-    avatar: "PZ",
-    text: "Nach einem Wasserschaden war EP Elektro innert 24 Stunden vor Ort und hat alles schnell und sauber wieder instand gestellt. Sehr zuverlässig.",
+    name: "Carla Mendes",
+    role: "Gestora de propriedades – Cascais",
+    text: "Trabalham connosco há mais de cinco anos em vários imóveis. Sempre pontuais, sempre com a documentação em ordem. Parceiros de confiança.",
   },
   {
-    name: "Giorgio Ferretti",
-    role: "Restaurateur, Zürich Altstadt",
-    avatar: "GF",
-    text: "Das Lichtkonzept für unser Restaurant ist einfach wunderschön. Gäste kommentieren es regelmässig positiv. Top Beratung und erstklassige Umsetzung.",
+    name: "Rui Oliveira",
+    role: "Arquitecto – Braga",
+    text: "Parceiros de eleição nos meus projectos de habitação. Excelente leitura do projecto e execução sempre alinhada com o que foi acordado.",
   },
   {
-    name: "Claudia Röthlisberger",
-    role: "Eigenheimbesitzerin, Zollikon",
-    avatar: "CR",
-    text: "Sehr freundliches Team, sauber auf der Baustelle und immer erreichbar. Das Preis-Leistungs-Verhältnis ist ausgezeichnet.",
+    name: "Sofia Nunes",
+    role: "COO – Empresa industrial em Setúbal",
+    text: "Refizeram toda a instalação da nossa fábrica com zero interrupções. A equipa da EP Elektro é verdadeiramente profissional.",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section
-      id="referenzen"
-      className="py-24 lg:py-32 bg-[#f8f9fb]"
-      aria-labelledby="referenzen-titel"
-    >
+    <section id="testemunhos" className="bg-[#f8f9fb] py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-14">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-          >
-            Kundenstimmen
-          </motion.p>
-          <div className="flex flex-col sm:flex-row sm:items-end gap-4">
-            <motion.h2
-              id="referenzen-titel"
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl lg:text-4xl font-bold text-[#0c1c35] leading-tight"
-            >
-              Was unsere Kunden sagen
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center gap-1.5 sm:mb-1"
-            >
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={14} className="fill-[#f5c518] text-[#f5c518]" aria-hidden="true" />
-                ))}
-              </div>
-              <span className="text-gray-400 text-sm">4.9 · 180+ Bewertungen</span>
-            </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-4"
+        >
+          <p className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+            Testemunhos
+          </p>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#0c1c35]">
+              O que dizem os nossos clientes
+            </h2>
+            <span className="text-[#0c1c35]/40 text-sm shrink-0">4.9 · 180+ avaliações</span>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Flat cards — no strong shadows, no gradient backgrounds */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+        {/* Grid */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#e0e4ea]">
+          {testimonials.map(({ name, role, text }, i) => (
             <motion.article
-              key={t.name}
-              initial={{ opacity: 0, y: 20 }}
+              key={name}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.07, ease: "easeOut" }}
-              className="bg-white border border-gray-100 p-6 flex flex-col"
+              className="bg-[#f8f9fb] p-8 flex flex-col gap-4"
             >
               {/* Stars */}
-              <div className="flex gap-0.5 mb-4" aria-label="5 von 5 Sternen">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={13} className="fill-[#f5c518] text-[#f5c518]" aria-hidden="true" />
+              <div className="flex gap-0.5" aria-label="5 estrelas">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} size={12} className="fill-[#f5c518] text-[#f5c518]" />
                 ))}
               </div>
-
-              {/* Text */}
-              <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-5">
-                &ldquo;{t.text}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                <div
-                  className="w-9 h-9 bg-[#0c1c35] flex items-center justify-center text-[#f5c518] text-xs font-bold shrink-0"
-                  aria-hidden="true"
-                >
-                  {t.avatar}
-                </div>
-                <div>
-                  <div className="text-[#0c1c35] font-semibold text-sm leading-none mb-0.5">
-                    {t.name}
-                  </div>
-                  <div className="text-gray-400 text-xs">{t.role}</div>
-                </div>
-              </div>
+              <blockquote className="text-sm text-[#0c1c35]/70 leading-relaxed flex-1">
+                &ldquo;{text}&rdquo;
+              </blockquote>
+              <footer>
+                <div className="text-sm font-semibold text-[#0c1c35]">{name}</div>
+                <div className="text-xs text-[#0c1c35]/40 mt-0.5">{role}</div>
+              </footer>
             </motion.article>
           ))}
         </div>

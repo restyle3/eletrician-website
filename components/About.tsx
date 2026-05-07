@@ -1,107 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const credentials = [
-  "NIV-zertifizierter Installationsbetrieb (ESTI anerkannt)",
-  "ISO 9001:2015 Qualitätsmanagementsystem",
-  "Mitglied Electrosuisse und VSIE",
-  "Eidgenössisch geprüfte Fachkräfte",
+  "Certificados pela DGEG",
+  "Conformidade com as normas RTIEBT",
+  "Seguros de responsabilidade civil",
+  "Parceiros certificados ABB e Schneider Electric",
+  "Formação contínua das nossas equipas",
+  "Mais de 18 anos de experiência no sector",
 ];
 
 export default function About() {
   return (
     <section
-      id="uber-uns"
-      className="py-24 lg:py-32 bg-[#0c1c35]"
-      aria-labelledby="uber-uns-titel"
+      id="sobre-nos"
+      className="bg-[#0c1c35] py-24 lg:py-32"
+      aria-label="Sobre a EP Elektro"
     >
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: Image — clean, no floating elements */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          {/* Left – image */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&auto=format&fit=crop"
-              alt="EP Elektro Team bei der Arbeit"
-              className="w-full h-[480px] lg:h-[560px] object-cover"
-              loading="lazy"
+              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&auto=format&fit=crop"
+              alt="Técnico EP Elektro em obra"
+              className="w-full aspect-[4/3] object-cover"
             />
-            {/* Subtle bottom stat overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-[#0c1c35]/80 px-6 py-5 backdrop-blur-sm">
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { value: "850+", label: "Projekte" },
-                  { value: "18 J.", label: "Erfahrung" },
-                  { value: "4.9★", label: "Bewertung" },
-                ].map(({ value, label }) => (
-                  <div key={label} className="text-center">
-                    <div className="text-white font-bold text-lg leading-none">{value}</div>
-                    <div className="text-white/40 text-xs mt-1">{label}</div>
-                  </div>
-                ))}
-              </div>
+            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0c1c35] to-transparent" />
+
+            {/* Badge */}
+            <div className="absolute bottom-6 left-6 bg-[#f5c518] px-4 py-3">
+              <div className="text-[#0c1c35] text-2xl font-bold leading-none">18+</div>
+              <div className="text-[#0c1c35]/70 text-xs mt-0.5">Anos de experiência</div>
             </div>
           </motion.div>
 
-          {/* Right: Text */}
+          {/* Right – text */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
           >
             <p className="text-[#f5c518] text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-              Über uns
+              Sobre nós
             </p>
-
-            <h2
-              id="uber-uns-titel"
-              className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-6"
-            >
-              Ihr zuverlässiger Partner
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+              Qualidade e rigor
               <br />
-              für Elektrotechnik.
+              <span className="font-light text-white/50">em cada instalação.</span>
             </h2>
-
-            <p className="text-white/55 text-base leading-relaxed mb-4">
-              EP Elektro wurde vor über 18 Jahren in der Deutschschweiz gegründet
-              und hat sich zu einem der angesehensten Elektrounternehmen der Region
-              entwickelt — mit einem eingespielten Team aus qualifizierten
-              Fachkräften.
+            <p className="text-white/50 text-sm leading-relaxed mb-4">
+              Desde 2006 que a EP Elektro executa instalações eléctricas de
+              alta qualidade para clientes particulares, empresas e indústria.
+              A nossa equipa de técnicos qualificados trabalha com rigor,
+              pontualidade e total transparência em cada projecto.
             </p>
-            <p className="text-white/55 text-base leading-relaxed mb-8">
-              Jedes Projekt erhält dieselbe Sorgfalt und Präzision, ob
-              Einfamilienhaus oder Gewerbeobjekt. Wir kommunizieren transparent,
-              halten Termine ein und liefern Arbeit, auf die Sie sich noch
-              Jahrzehnte verlassen können.
+            <p className="text-white/50 text-sm leading-relaxed mb-10">
+              Trabalhamos com os materiais e equipamentos das melhores marcas
+              do sector, garantindo segurança e durabilidade a longo prazo em
+              todas as instalações que realizamos.
             </p>
 
-            <ul className="space-y-3 mb-10" role="list">
+            {/* Credentials list */}
+            <ul className="space-y-3" aria-label="Certificações e qualificações">
               {credentials.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2
-                    size={16}
-                    className="text-[#f5c518] mt-0.5 shrink-0"
-                    aria-hidden="true"
-                  />
+                <li key={item} className="flex items-center gap-3">
+                  <CheckCircle size={16} className="text-[#f5c518] shrink-0" />
                   <span className="text-white/60 text-sm">{item}</span>
                 </li>
               ))}
             </ul>
 
             <a
-              href="#kontakt"
-              className="inline-block border border-white/30 text-white text-sm px-6 py-3 hover:bg-white hover:text-[#0c1c35] transition-all duration-200"
+              href="#contacto"
+              className="inline-block mt-10 text-sm text-white/40 hover:text-white transition-colors duration-200"
             >
-              Unternehmen kennenlernen →
+              Conhecer a empresa →
             </a>
           </motion.div>
         </div>
