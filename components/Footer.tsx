@@ -35,56 +35,33 @@ const social = [
       </svg>
     ),
   },
-  {
-    label: "Facebook",
-    href: "#",
-    svg: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-      </svg>
-    ),
-  },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#050d1a] text-white" role="contentinfo">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-8">
-        {/* Top section */}
+    <footer className="bg-[#080f1e] text-white" role="contentinfo">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 pt-16 pb-8">
+        {/* Top */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a
-              href="#"
-              className="flex items-center gap-2.5 mb-5"
-              aria-label="Volta Elektro AG – Startseite"
-            >
-              <div className="w-9 h-9 bg-[#f5c518] rounded-lg flex items-center justify-center shadow-lg shadow-[#f5c518]/20">
-                <Zap size={18} className="text-[#0a1628]" strokeWidth={2.5} />
-              </div>
-              <div className="leading-none">
-                <span className="text-white font-bold text-lg tracking-tight block">
-                  Volta Elektro
-                </span>
-                <span className="text-[#f5c518] text-[10px] font-semibold tracking-[0.2em] uppercase">
-                  AG · Zürich
-                </span>
-              </div>
+            <a href="#" className="flex items-center gap-2 mb-5" aria-label="EP Elektro – Startseite">
+              <Zap size={18} className="text-[#f5c518]" strokeWidth={2} />
+              <span className="text-white font-semibold tracking-wide">EP Elektro</span>
             </a>
-            <p className="text-white/40 text-sm leading-relaxed mb-6">
-              Ihr zuverlässiger Elektriker in der Deutschschweiz. Qualität,
-              Präzision und Verlässlichkeit seit 2006.
+            <p className="text-white/35 text-sm leading-relaxed mb-6">
+              Zuverlässige Elektroinstallationen in der Deutschschweiz.<br />
+              Qualität und Verlässlichkeit seit über 18 Jahren.
             </p>
-            {/* Social links */}
             <div className="flex items-center gap-3">
               {social.map(({ svg, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-white/60 hover:bg-[#f5c518] hover:text-[#0a1628] transition-all duration-200"
+                  className="w-8 h-8 border border-white/15 flex items-center justify-center text-white/40 hover:text-[#f5c518] hover:border-[#f5c518]/40 transition-all duration-200"
                 >
                   {svg}
                 </a>
@@ -94,7 +71,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-5 tracking-wide">
+            <h3 className="text-white/50 text-[10px] uppercase tracking-[0.15em] font-semibold mb-5">
               Navigation
             </h3>
             <nav aria-label="Footer-Navigation">
@@ -103,7 +80,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-white/45 text-sm hover:text-[#f5c518] transition-colors duration-200"
+                      className="text-white/40 text-sm hover:text-white transition-colors duration-200"
                     >
                       {link.label}
                     </a>
@@ -115,7 +92,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-5 tracking-wide">
+            <h3 className="text-white/50 text-[10px] uppercase tracking-[0.15em] font-semibold mb-5">
               Leistungen
             </h3>
             <ul className="space-y-3">
@@ -130,7 +107,7 @@ export default function Footer() {
                 <li key={item}>
                   <a
                     href="#leistungen"
-                    className="text-white/45 text-sm hover:text-[#f5c518] transition-colors duration-200"
+                    className="text-white/40 text-sm hover:text-white transition-colors duration-200"
                   >
                     {item}
                   </a>
@@ -141,83 +118,46 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-5 tracking-wide">
+            <h3 className="text-white/50 text-[10px] uppercase tracking-[0.15em] font-semibold mb-5">
               Kontakt
             </h3>
             <ul className="space-y-4">
-              <li>
-                <a
-                  href="tel:+41441234567"
-                  className="flex items-start gap-3 group"
-                  aria-label="Anrufen: +41 44 123 45 67"
-                >
-                  <Phone
-                    size={15}
-                    className="text-[#f5c518] mt-0.5 shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="text-white/45 text-sm group-hover:text-white/70 transition-colors">
-                    +41 44 123 45 67
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@volta-elektro.ch"
-                  className="flex items-start gap-3 group"
-                  aria-label="E-Mail schreiben: info@volta-elektro.ch"
-                >
-                  <Mail
-                    size={15}
-                    className="text-[#f5c518] mt-0.5 shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="text-white/45 text-sm group-hover:text-white/70 transition-colors">
-                    info@volta-elektro.ch
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://maps.google.com/?q=Industriestrasse+42+8005+Zürich"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 group"
-                  aria-label="Adresse auf Google Maps öffnen"
-                >
-                  <MapPin
-                    size={15}
-                    className="text-[#f5c518] mt-0.5 shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="text-white/45 text-sm group-hover:text-white/70 transition-colors leading-relaxed">
-                    Industriestrasse 42<br />8005 Zürich
-                  </span>
-                </a>
-              </li>
+              {[
+                { icon: Phone, value: "+41 44 123 45 67", href: "tel:+41441234567", label: "Anrufen" },
+                { icon: Mail, value: "info@ep-elektro.ch", href: "mailto:info@ep-elektro.ch", label: "E-Mail schreiben" },
+                { icon: MapPin, value: "Industriestrasse 42\n8005 Zürich", href: "https://maps.google.com/?q=Industriestrasse+42+8005+Zürich", label: "Adresse öffnen" },
+              ].map(({ icon: Icon, value, href, label }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    aria-label={label}
+                    className="flex items-start gap-3 group"
+                  >
+                    <Icon size={14} className="text-[#f5c518] mt-0.5 shrink-0" aria-hidden="true" />
+                    <span className="text-white/40 text-sm group-hover:text-white/70 transition-colors whitespace-pre-line">
+                      {value}
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
-
-            {/* 24/7 badge */}
-            <div className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-500/15 border border-red-500/30 text-red-400 text-xs font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-              24/7 Notfalldienst
+            <div className="mt-5 flex items-center gap-2 text-red-400 text-xs font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" aria-hidden="true" />
+              24/7 Notfalldienst aktiv
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/30 text-xs">
-          <p>
-            © {year} Volta Elektro AG, Zürich. Alle Rechte vorbehalten.
-          </p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/25 text-xs">
+          <p>© {year} EP Elektro · Zürich · Alle Rechte vorbehalten.</p>
           <nav aria-label="Rechtliche Links">
-            <ul className="flex items-center gap-4 sm:gap-6">
+            <ul className="flex items-center gap-5">
               {legalLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="hover:text-white/60 transition-colors duration-200"
-                  >
+                  <a href={link.href} className="hover:text-white/50 transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>

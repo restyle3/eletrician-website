@@ -13,24 +13,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Volta Elektro AG – Ihr Elektriker in Zürich & Deutschschweiz",
+  title: "EP Elektro – Ihr Elektriker in Zürich & Deutschschweiz",
   description:
-    "Volta Elektro AG ist Ihr zuverlässiger Partner für Elektroinstallationen, Smart Home, Beleuchtungssysteme und Notfallreparaturen in der Deutschschweiz. NIV-zertifiziert, ISO 9001. Jetzt Offerte anfragen.",
+    "EP Elektro ist Ihr zuverlässiger Partner für Elektroinstallationen, Smart Home, Beleuchtungssysteme und Notfallreparaturen in der Deutschschweiz. NIV-zertifiziert, ISO 9001. Jetzt Offerte anfragen.",
   keywords: [
     "Elektriker Zürich",
+    "EP Elektro",
     "Elektroinstallation Schweiz",
     "Smart Home Zürich",
     "Elektriker Notfall",
     "KNX Installation",
-    "Loxone Zürich",
   ],
-  authors: [{ name: "Volta Elektro AG" }],
+  authors: [{ name: "EP Elektro" }],
   openGraph: {
     type: "website",
     locale: "de_CH",
-    url: "https://www.volta-elektro.ch",
-    siteName: "Volta Elektro AG",
-    title: "Volta Elektro AG – Ihr Elektriker in Zürich",
+    url: "https://www.ep-elektro.ch",
+    siteName: "EP Elektro",
+    title: "EP Elektro – Ihr Elektriker in Zürich",
     description:
       "Professionelle Elektroinstallationen, Smart Home und 24/7 Notfallservice in der Deutschschweiz.",
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         url: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80",
         width: 1200,
         height: 630,
-        alt: "Volta Elektro AG – Elektriker in Zürich",
+        alt: "EP Elektro – Elektriker in Zürich",
       },
     ],
   },
