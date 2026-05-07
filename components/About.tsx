@@ -72,7 +72,7 @@ export default function About() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1581092334574-b2bdf31ba3e5?w=400&q=80&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80&auto=format&fit=crop"
                 alt="Elektrische Schalttafel"
                 className="w-full h-full object-cover"
                 loading="lazy"
